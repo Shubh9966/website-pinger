@@ -1,0 +1,23 @@
+name: Ping Websites
+
+on:
+  schedule:
+    # IST 11:00 AM - 6:00 PM = UTC 05:30 - 12:30 (Mon-Fri)
+    - cron: '30-55/5 5 * * 1-5'   # 11:00 - 11:25 AM IST
+    - cron: '*/5 6-11 * * 1-5'    # 11:30 AM - 5:25 PM IST
+    - cron: '0-30/5 12 * * 1-5'   # 5:30 - 6:00 PM IST
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping sites
+        run: |
+          for url in \
+            "https://medguide-ai-6orj.onrender.com/health" \
+            "https://tripmakerai-a-multi-agent-travel-planner.onrender.com/health" \
+            "https://cloudopsllm.onrender.com/health"
+          do
+            curl -fsS -o /dev/null --max-time 30 "$url" && echo "$url OK" || { echo "$url DOWN"; exit 1; }
+          done

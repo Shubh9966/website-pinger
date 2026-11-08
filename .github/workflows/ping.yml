@@ -16,9 +16,9 @@ jobs:
         run: |
           fail=0
           for url in \
-            "https://medguide-ai-6orj.onrender.com/health" \
-            "https://tripmakerai-a-multi-agent-travel-planner.onrender.com/health" \
-            "https://cloudopsllm.onrender.com/health"
+            "https://medguide-ai-6orj.onrender.com" \
+            "https://tripmakerai-a-multi-agent-travel-planner.onrender.com" \
+            "https://cloudopsllm.onrender.com"
           do
             if curl -fsS -o /dev/null --max-time 90 --retry 1 "$url"; then
               echo "$url OK"

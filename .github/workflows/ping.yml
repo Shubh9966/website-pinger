@@ -3,9 +3,9 @@ name: Ping Websites
 on:
   schedule:
     # IST 11:00 AM - 6:00 PM = UTC 05:30 - 12:30 (Mon-Fri)
-    - cron: '30-55/5 5 * * 1-5'
-    - cron: '*/5 6-11 * * 1-5'
-    - cron: '0-30/5 12 * * 1-5'
+    - cron: '30-55/5 3 * * 1-5'    # 9:00 - 9:25 AM IST
+    - cron: '*/5 4-12 * * 1-5'     # 9:30 AM - 6:25 PM IST
+    - cron: '0-30/5 13 * * 1-5'    # 6:30 - 7:00 PM IST
   workflow_dispatch:
 
 jobs:
